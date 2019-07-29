@@ -27,23 +27,23 @@ namespace SampleXUnitTest.WebApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    BlogId = table.Column<int>(nullable: false)
+                    BlogForeignKey = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.PostId);
                     table.ForeignKey(
-                        name: "FK_Posts_Blogs_BlogId",
-                        column: x => x.BlogId,
+                        name: "FK_Posts_Blogs_BlogForeignKey",
+                        column: x => x.BlogForeignKey,
                         principalTable: "Blogs",
                         principalColumn: "BlogId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_BlogId",
+                name: "IX_Posts_BlogForeignKey",
                 table: "Posts",
-                column: "BlogId");
+                column: "BlogForeignKey");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

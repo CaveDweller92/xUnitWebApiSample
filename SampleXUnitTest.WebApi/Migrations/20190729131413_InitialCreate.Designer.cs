@@ -8,7 +8,7 @@ using SampleXUnitTest.WebApi;
 namespace SampleXUnitTest.WebApi.Migrations
 {
     [DbContext(typeof(BloggingContext))]
-    [Migration("20190728041141_InitialCreate")]
+    [Migration("20190729131413_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace SampleXUnitTest.WebApi.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
-            modelBuilder.Entity("SampleXUnitTest.WebApi.Blog", b =>
+            modelBuilder.Entity("SampleXUnitTest.WebApi.Models.Blog", b =>
                 {
                     b.Property<int>("BlogId")
                         .ValueGeneratedOnAdd();
@@ -29,12 +29,12 @@ namespace SampleXUnitTest.WebApi.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("SampleXUnitTest.WebApi.Post", b =>
+            modelBuilder.Entity("SampleXUnitTest.WebApi.Models.Post", b =>
                 {
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BlogId");
+                    b.Property<int>("BlogForeignKey");
 
                     b.Property<string>("Content");
 
@@ -42,16 +42,16 @@ namespace SampleXUnitTest.WebApi.Migrations
 
                     b.HasKey("PostId");
 
-                    b.HasIndex("BlogId");
+                    b.HasIndex("BlogForeignKey");
 
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("SampleXUnitTest.WebApi.Post", b =>
+            modelBuilder.Entity("SampleXUnitTest.WebApi.Models.Post", b =>
                 {
-                    b.HasOne("SampleXUnitTest.WebApi.Blog", "Blog")
+                    b.HasOne("SampleXUnitTest.WebApi.Models.Blog", "Blog")
                         .WithMany("Posts")
-                        .HasForeignKey("BlogId")
+                        .HasForeignKey("BlogForeignKey")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
