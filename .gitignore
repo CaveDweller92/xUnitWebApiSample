@@ -1,1 +1,3 @@
 .vs/
+/SampleXUnitTest.UnitTest/bin/Debug/netcoreapp2.2
+/SampleXUnitTest.UnitTest/obj
