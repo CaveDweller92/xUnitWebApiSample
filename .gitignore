@@ -1,3 +1,5 @@
-.vs/
-/SampleXUnitTest.UnitTest/bin/Debug/netcoreapp2.2
+.vs/ 
+/SampleXUnitTest.UnitTest/bin
 /SampleXUnitTest.UnitTest/obj
+/SampleXUnitTest.WebApi/bin
+/SampleXUnitTest.WebApi/obj

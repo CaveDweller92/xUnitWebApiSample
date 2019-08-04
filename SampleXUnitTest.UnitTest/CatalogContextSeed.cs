@@ -36,7 +36,7 @@ namespace SampleXUnitTest.UnitTest
                         GetPosts());
 
                     await bloggingContext.SaveChangesAsync();
-                } 
+                }
             }
             catch (Exception ex)
             {
@@ -52,12 +52,20 @@ namespace SampleXUnitTest.UnitTest
 
         private static Post[] GetPosts()
         {
-            throw new NotImplementedException();
+            return new Post[]
+              {
+                 new Post(){ Title = "Jumpstart for X unit", Content ="Unit make your project perfect.", BlogForeignKey=1}
+              };
         }
 
         private static Blog[] GetBlogs()
         {
-            throw new NotImplementedException();
+            return new Blog[]
+            {
+                new Blog() { Url = "http://blogs.msdn.com/dotnet" },
+                new Blog() { Url = "http://blogs.msdn.com/webdev" },
+                new Blog() { Url = "http://blogs.msdn.com/visualstudio" },
+            };
         }
     }
 }
